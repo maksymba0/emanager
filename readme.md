@@ -8,12 +8,12 @@ A full-stack internal tool for managing employees, departments, shifts, and time
 
 ### Admin View
 
-![Login page](SCREENSHOT_URL_HERE)
+### Login page
 <img width="1917" height="866" alt="Screenshot 2026-10-31 085144" src="https://github.com/user-attachments/assets/25610e1a-e7a3-46ff-b1f7-d96aba78626d" />
-![Dashboard](SCREENSHOT_URL_HERE)
+### Dashboard
 <img width="1900" height="871" alt="Screenshot 2026-10-31 085153" src="https://github.com/user-attachments/assets/ac4d7e77-00a0-46bf-ab1c-4f3ad13360de" />
 
-![Departments Employees Shifts Time-offs table](SCREENSHOT_URL_HERE)
+### Departments Employees Shifts Time-offs table
 <img width="1901" height="867" alt="Screenshot 2026-10-31 085202" src="https://github.com/user-attachments/assets/466984f1-e3b7-4a9e-b0b5-2feec1627014" />
 <img width="1915" height="862" alt="Screenshot 2026-10-31 085209" src="https://github.com/user-attachments/assets/9ef3471e-036d-4571-8789-1e464a80da22" />
 <img width="1915" height="863" alt="Screenshot 2026-10-31 085214" src="https://github.com/user-attachments/assets/986bf4e6-4e1b-42b6-9123-150af34e9ae9" />

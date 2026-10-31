@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from database import get_db
+from database import Base, get_db, engine
 from schemas import BulkDeleteShiftsRequest, BulkDeleteTimeoffRequest, DepartmentWithManager, BulkDeleteDepartmentsRequest, BulkDeleteRequest, EmployeePublicResponse, LogResponse, TimeOffUpdate,TimeOffResponse,TimeOffCreate,EmployeeCreate, EmployeeResponse, EmployeeUpdate, LoginRequest, TokenResponse, ShiftResponse, ShiftCreate, ShiftUpdate, DepartmentCreate, DepartmentResponse, DepartmentUpdate
 from models import Employee, Shift, Department, TimeOff
 from auth import verify_password, create_token, get_current_user, require_role
@@ -9,6 +9,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 version = "0.1"
+
+Base.metadata.create_all(bind=engine)
+
 
 app.add_middleware(
     CORSMiddleware,

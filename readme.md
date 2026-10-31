@@ -106,9 +106,11 @@ SECRET_KEY=
 React (localhost:5173)
 │ HTTP + JWT in Authorization header
 ▼
+
 FastAPI (localhost:8000)
 │ SQLAlchemy ORM
 ▼
+
 PostgreSQL (Docker, port 5432)
 
 ## What I Learned

@@ -1,0 +1,8 @@
+Layer	Technology
+Backend	FastAPI
+Database	PostgreSQL
+ORM	SQLAlchemy
+Auth	JWT
+Frontend	React + TypeScript
+Styling	Tailwind CSS
+Deployment	Docker + Render

@@ -1,0 +1,76 @@
+TABLE: employees
+- id: integer, primary key
+- first_name: string, required
+- last_name: string, required
+- phone_number: string
+- password_hash: string, required
+- email: string, unique, required
+- role: string ("admin", "manager", "employee")
+- position: string
+- hourly_rate: decimal
+- is_active: boolean, default true
+- created_at: timestamp
+- department_id: integer
+############
+CREATE TABLE employees (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(20) NOT NULL,
+  last_name VARCHAR(25) NOT NULL,
+  phone_number VARCHAR(15),
+  password_hash VARCHAR(256) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  role VARCHAR(20) CHECK (role IN ('admin', 'manager', 'employee')) DEFAULT 'employee'	,
+  position VARCHAR(30),
+  hourly_rate DECIMAL(10,2),
+  is_active BOOL DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  department_id INTEGER
+);
+
+TABLE: departments
+- id: integer, primary key
+- name: string, required
+- manager_id: integer,
+#################
+CREATE TABLE departments (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(30) NOT NULL,
+  manager_id INTEGER
+);
+TABLE: shifts
+- id: integer, primary key
+- employee_id: integer, foreign key to employees, required
+- shift_date: date, required
+- start_time: time, required
+- end_time: time, required
+- notes: string
+################
+CREATE TABLE shifts (
+ id SERIAL PRIMARY KEY,
+ employee_id INTEGER NOT NULL REFERENCES employees(id),
+ shift_date DATE NOT NULL,
+ start_time TIME NOT NULL,
+ end_time TIME NOT NULL,
+ notes VARCHAR(30)
+);
+
+TABLE: time_off_requests
+- id: integer, primary key
+- employee_id: integer, foreign key to employees, required
+- start_date: date, required
+- end_date: date, required
+- reason: string
+- status: string ("pending", "approved", "rejected")
+- reviewed_by: integer, foreign key to employees (optional)
+- created_at: timestamp
+#############
+CREATE TABLE timeoffs (
+ id SERIAL PRIMARY KEY,
+ employee_id INTEGER NOT NULL REFERENCES employees(id),
+ start_date DATE NOT NULL,
+ end_date DATE NOT NULL,
+ reason VARCHAR(100),
+ status VARCHAR(15) CHECK (status IN ('pending','rejected','approved')) DEFAULT 'pending',
+ reviewed_by INTEGER REFERENCES employees(id),
+ created_at TIMESTAMP DEFAULT NOW()
+);

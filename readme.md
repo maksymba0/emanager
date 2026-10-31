@@ -56,26 +56,33 @@ A full-stack internal tool for managing employees, departments, shifts, and time
 ### Backend
 
 **1. Start PostgreSQL**
+```
 cd backend
 docker compose up -d
+```
 
 **2. Create and activate a virtual environment**
+```
 python -m venv .venv
 ..venv\Scripts\Activate.ps1
-
+```
 
 **3. Install dependencies**
+```
 pip install -r requirements.txt
-
+```
 
 **4. Seed the first admin account**
+```
 python seed.py
+```
 
 This creates `admin@test.com` / `admin`. Change the password after first login.
 
 **5. Run the server**
+```
 python -m uvicorn main:app --reload
-
+```
 
 API: http://127.0.0.1:8000  
 Swagger docs: http://127.0.0.1:8000/docs
@@ -83,11 +90,15 @@ Swagger docs: http://127.0.0.1:8000/docs
 ### Frontend
 
 **1. Install dependencies**
+```
 cd frontend
 npm install
+```
 
 **2. Run the dev server**
+```
 npm run dev
+```
 
 App: http://localhost:5173
 

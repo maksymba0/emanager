@@ -1,26 +1,19 @@
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
-USER = os.getenv("POSTGRES_USER")
-PASSWORD = os.getenv("POSTGRES_PASSWORD")
-DB = os.getenv("POSTGRES_DB")
- 
-DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@localhost:5433/{DB}?client_encoding=utf8"
+# 1. Prefer DATABASE_URL (CI / Render / production)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
+# 2. Fall back to local dev (Docker on port 5433)
 if not DATABASE_URL:
     USER = os.getenv("POSTGRES_USER")
     PASSWORD = os.getenv("POSTGRES_PASSWORD")
     DB = os.getenv("POSTGRES_DB")
     DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@localhost:5433/{DB}"
-    
-print(f"USER: {repr(USER)}")
-print(f"PASSWORD: {repr(PASSWORD)}")
-print(f"DB: {repr(DB)}")
-print(f"URL: {repr(DATABASE_URL)}")
 
 engine = create_engine(DATABASE_URL)
 

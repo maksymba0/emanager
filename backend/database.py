@@ -11,6 +11,12 @@ DB = os.getenv("POSTGRES_DB")
  
 DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@localhost:5433/{DB}?client_encoding=utf8"
 
+if not DATABASE_URL:
+    USER = os.getenv("POSTGRES_USER")
+    PASSWORD = os.getenv("POSTGRES_PASSWORD")
+    DB = os.getenv("POSTGRES_DB")
+    DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@localhost:5433/{DB}"
+    
 print(f"USER: {repr(USER)}")
 print(f"PASSWORD: {repr(PASSWORD)}")
 print(f"DB: {repr(DB)}")

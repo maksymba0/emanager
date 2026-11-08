@@ -38,6 +38,11 @@ jobs:
           cd backend
           pip install -r requirements.txt
           pip install pytest httpx
+          
+      - name: Debug DATABASE_URL
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
+        run: python -c "import os; print('DATABASE_URL =', repr(os.getenv('DATABASE_URL')))"
 
       - name: Run tests
         env:

@@ -6,7 +6,7 @@ client = TestClient(app)
 def test_login_success():
     response = client.post(
         "/auth/login",
-        json={"email": "max@test.com", "password": "admin"}
+        json={"email": "admin@test.com", "password": "admin"}
     )
     assert response.status_code == 200
     assert "access_token" in response.json()
